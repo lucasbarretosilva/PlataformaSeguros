@@ -17,14 +17,14 @@ Requer .NET 8 SDK e SQL Server (local ou em container). Ajuste `ConnectionString
 dotnet restore
 dotnet build
 
-# 2) Criar bancos e migrations (cada serviço separadamente)
+# 2) Criar bancos (cada serviço separadamente)
 cd PropostaService
-dotnet ef migrations add Init -s ./Adapters/In/Api -p ./Adapters/Out/Persistence
+
 dotnet ef database update -s ./Adapters/In/Api -p ./Adapters/Out/Persistence
 cd ..
 
 cd ContratacaoService
-dotnet ef migrations add Init -s ./Adapters/In/Api -p ./Adapters/Out/Persistence
+
 dotnet ef database update -s ./Adapters/In/Api -p ./Adapters/Out/Persistence
 cd ..
 
@@ -34,7 +34,7 @@ dotnet run --project ContratacaoService/Adapters/In/Api
 ```
 
 - PropostaService: http://localhost:5001
-- ContratacaoService: http://localhost:5002
+- ContratacaoService: http://localhost:5011
 
 ## Como rodar com Docker Compose
 
