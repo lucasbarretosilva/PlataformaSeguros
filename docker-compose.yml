@@ -1,0 +1,50 @@
+
+version: "3.9"
+services:
+  sql-propostas:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Your_strong_password123
+    ports:
+      - "1435:1433"
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools18/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "Your_strong_password123", "-C", "-Q", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  sql-contratacoes:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Your_strong_password123
+    ports:
+      - "1436:1433"
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools18/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "Your_strong_password123", "-C", "-Q", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  proposta-api:
+    build: ./PropostaService/Adapters/In/Api
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__Default=Server=sql-propostas,1433;Database=PropostasDb;User Id=sa;Password=Your_strong_password123;TrustServerCertificate=True
+    depends_on:
+      - sql-propostas
+    ports:
+      - "5001:8080"
+
+  contratacao-api:
+    build: ./ContratacaoService/Adapters/In/Api
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__Default=Server=sql-contratacoes,1433;Database=ContratacoesDb;User Id=sa;Password=Your_strong_password123;TrustServerCertificate=True
+      - Services__PropostaBaseUrl=http://proposta-api:8080
+    depends_on:
+      - sql-contratacoes
+      - proposta-api
+    ports:
+      - "5002:8080"

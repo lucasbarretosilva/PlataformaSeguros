@@ -1,0 +1,29 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:56806/",
+      "sslPort": 44337
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__Default": "Server=localhost\\SQLEXPRESS;Database=PropostasDb;Trusted_Connection=True;TrustServerCertificate=True"
+      }
+    },
+    "PropostaService.Api": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__Default": "Server=localhost\\SQLEXPRESS;Database=PropostasDb;Trusted_Connection=True;TrustServerCertificate=True"
+      },
+      "applicationUrl": "http://localhost:5001"
+    }
+  }
+}

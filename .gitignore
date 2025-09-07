@@ -52,3 +52,32 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# .NET
+bin/
+obj/
+*.user
+*.rsuser
+*.suo
+*.userprefs
+*.csproj.user
+
+# VS / Rider
+.vs/
+.idea/
+.vscode/
+
+# Build caches / bancos locais
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.mdf
+*.ldf
+
+# Docker
+*.env
+
+# OS
+.DS_Store
+Thumbs.db

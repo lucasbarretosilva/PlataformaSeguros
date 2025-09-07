@@ -1,0 +1,13 @@
+
+# Criar solution com:
+dotnet new sln -n INDT.Hexagonal
+dotnet sln add PropostaService/Adapters/In/Api/PropostaService.Api.csproj
+dotnet sln add PropostaService/Adapters/Out/Persistence/PropostaService.Persistence.csproj
+dotnet sln add PropostaService/Application/PropostaService.Application.csproj
+dotnet sln add PropostaService/Domain/PropostaService.Domain.csproj
+
+dotnet sln add ContratacaoService/Adapters/In/Api/ContratacaoService.Api.csproj
+dotnet sln add ContratacaoService/Adapters/Out/Persistence/ContratacaoService.Persistence.csproj
+dotnet sln add ContratacaoService/Adapters/Out/Http/ContratacaoService.Http.csproj
+dotnet sln add ContratacaoService/Application/ContratacaoService.Application.csproj
+dotnet sln add ContratacaoService/Domain/ContratacaoService.Domain.csproj
