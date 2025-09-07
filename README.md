@@ -45,7 +45,7 @@ docker compose up --build
 ```
 
 - PropostaService: http://localhost:5001
-- ContratacaoService: http://localhost:5002
+- ContratacaoService: http://localhost:5011
 
 ## Endpoints
 - **PropostaService**
